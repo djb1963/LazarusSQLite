@@ -1,0 +1,39 @@
+object dmMain: TdmMain
+  OldCreateOrder = False
+  Height = 310
+  HorizontalOffset = 778
+  VerticalOffset = 123
+  Width = 338
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    Left = 45
+    Top = 24
+  end
+  object SQLite3Connection1: TSQLite3Connection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    AlwaysUseBigint = False
+    Left = 199
+    Top = 34
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Database = SQLite3Connection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select * from pages'
+    )
+    Params = <>
+    Macros = <>
+    Left = 179
+    Top = 144
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Database = SQLite3Connection1
+    Left = 256
+    Top = 128
+  end
+end
