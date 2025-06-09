@@ -5,7 +5,7 @@ unit uMain;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, EditBtn, Buttons,
+  Windows, Classes, SysUtils, Forms, Controls, Graphics, Dialogs, EditBtn, Buttons,
   DBGrids, ExtCtrls, StdCtrls, DBCtrls, udmMain;
 
 type
@@ -23,6 +23,7 @@ type
     paTop: TPanel;
     procedure bbOpenClick(Sender: TObject);
     procedure DBGrid1ColEnter(Sender: TObject);
+    procedure edSQLKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FileNameEdit1AcceptFileName(Sender: TObject; var Value: String);
     procedure FormCreate(Sender: TObject);
   private
@@ -58,12 +59,21 @@ begin
 
   dmMain.SQLite3Connection1.Open;
   dmMain.SQLQuery1.Open;
+  DBGrid1.SetFocus;
 end;
 
 procedure TfmMain.DBGrid1ColEnter(Sender: TObject);
 begin
-//  DBMemo1.DataField=(Sender as TDBGrid).SelectedField.FieldName;
-  DBMemo1.DataField=DBGrid1.SelectedField.FieldName;
+////  if DBMemo1.Visible then begin
+  if (Sender as TDBGrid).DataSource.DataSet.Active then begin
+     DBMemo1.DataField:=(Sender as TDBGrid).SelectedField.FieldName;
+  end;
+end;
+
+procedure TfmMain.edSQLKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_RETURN then bbOpen.Click;
 end;
 
 end.

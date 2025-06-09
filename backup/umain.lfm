@@ -18,7 +18,7 @@ object fmMain: TfmMain
     Color = clWindow
     Columns = <>
     DataSource = dmMain.DataSource1
-    TabOrder = 0
+    TabOrder = 1
     OnColEnter = DBGrid1ColEnter
   end
   object paTop: TPanel
@@ -29,7 +29,7 @@ object fmMain: TfmMain
     Align = alTop
     ClientHeight = 96
     ClientWidth = 734
-    TabOrder = 1
+    TabOrder = 0
     object FileNameEdit1: TFileNameEdit
       Left = 8
       Height = 23
@@ -46,9 +46,9 @@ object fmMain: TfmMain
       TabOrder = 0
     end
     object bbOpen: TBitBtn
-      Left = 496
+      Left = 584
       Height = 30
-      Top = 0
+      Top = 57
       Width = 123
       Caption = 'Выполнить'
       Glyph.Data = {
@@ -145,6 +145,7 @@ object fmMain: TfmMain
       Width = 496
       TabOrder = 2
       Text = 'select * from pages'
+      OnKeyDown = edSQLKeyDown
     end
     object laSQL: TLabel
       Left = 8
